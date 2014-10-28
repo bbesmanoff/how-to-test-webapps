@@ -24,10 +24,11 @@ Brian Besmanoff
   * Rails
   * RSpec
   * Capybara
-
+<p><br /></p>
 * Javascript
   * Backbone
   * Jasmine
+  * Jasmine-jQuery
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
 
