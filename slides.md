@@ -246,7 +246,7 @@ describe('The Big Red Button', function() {
 
 ---
 
-# Let's Take the Red Pill
+![Red Pill GIF](http://i.giphy.com/JFCTv9AvwFBJK.gif)
 
 ---
 
@@ -286,5 +286,89 @@ Views display collections and/or models
 The example wasn't being parsed properly and would have been a little long for a
 slide
 ```
+
+---
+
+# Where Does Jasmine Come in?
+
+---
+
+## Example: Let's Test This Puppy
+Testing the model:
+
+```javascript
+  describe('StudentModel', function() {
+    beforeEach(function() {
+      this.student = new StudentModel({name: 'Joe Schmoe', year: 2});
+    });
+
+    describe('#procrastinate', function() {
+      it('should write to the console', function() {
+        spyOn(console, 'log');
+
+        this.student.procrastinate();
+
+        expect(console.log).toHaveBeenCalled();
+        expect(console.log).toHaveBeenCalledWith('Joe Schmoe is procrastinating.  Typical year 2 things.');
+      });
+    });
+  });
+```
+
+---
+
+## Example: Let's Test This Puppy
+Testing the view:
+
+```javascript
+  describe('StudentView', function() {
+    beforeEach(function() {
+      this.student = new StudentModel({name: 'Joe Schmoe', year: 2});
+    });
+
+    describe('#render', function() {
+      var $rendered;
+
+      beforeEach(function() {
+        var view = new StudentView({model: this.student});
+        $rendered = view.render().$el;
+      });
+
+      it ('should be a list item', function() {
+        expect($rendered).toBeMatchedBy('li');
+      });
+
+      it('should include a student\'s name', function() {
+        expect($rendered).toContainText('Joe Schmoe');
+      });
+
+      it('should include a student\'s year', function() {
+        expect($rendered).toContainText('2');
+      });
+
+      it('should include a procrastination link', function() {
+        expect($rendered).toContainElement('a');
+      });
+
+      describe('the procrastination link', function() {
+        var $link;
+
+        beforeEach(function() {
+          $link = $rendered.find('a');
+        });
+
+        it('should call the model\'s procrastinate method', function() {
+          spyOn(this.student, 'procrastinate').and.callThrough();
+          $link.trigger('click');
+
+          expect(this.student.procrastinate).toHaveBeenCalled();
+        });
+      });
+    });
+  });
+```
+[example here](backbone_jasmine_01.html)
+
+
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
