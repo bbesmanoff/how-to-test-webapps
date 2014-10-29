@@ -174,8 +174,8 @@ _Spy on_ a function
   var waitAndDo = function(fn, ms) { setTimeout(fn, ms); };
 
   describe('waitAndDo', function() {
-    beforeEach(jasmine.clock.install);
-    afterEach(jasmine.clock.uninstall);
+    beforeEach(jasmine.clock().install);
+    afterEach(jasmine.clock().uninstall);
 
     it('should wait for 1000000 ms', function() {
       spyOn(console, 'log');
@@ -183,13 +183,24 @@ _Spy on_ a function
 
       expect(console.log).not.toHaveBeenCalled();
 
-      clock.tick(1000001);
+      jasmine.clock().tick(1000000);
       expect(console.log).toHaveBeenCalled();
-      expect(console.log).toHaveBeenCalledWith(done);
+      expect(console.log).toHaveBeenCalledWith('done');
+    });
+
+    it('should show that clock() actually works', function() {
+      spyOn(console, 'log');
+      waitAndDo(function() { console.log('done'); }, 1);
+
+      expect(console.log).not.toHaveBeenCalled();
+
+      jasmine.clock().tick(1);
+      expect(console.log).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith('done');
     });
   });
 ```
-
+[example here](jasmine_04.html)
 ---
 
 # Jasmine-jQuery
