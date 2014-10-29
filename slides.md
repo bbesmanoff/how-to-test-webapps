@@ -114,11 +114,6 @@ It looks like English
     });
   });
 ```
-
----
-
-# Jasmine: An Example
-
 [example lives here](jasmine_01.html)
 
 ---
@@ -256,7 +251,7 @@ describe('The Big Red Button', function() {
 ---
 
 ## Jasmine-jQuery: An Example
-[no tricks, just :green_heart:](jasmine-jquery_01.html)
+[example here](jasmine-jquery_01.html)
 
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
