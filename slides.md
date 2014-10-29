@@ -405,4 +405,201 @@ end
 ```
 examples are in this repository, but let's go to the shell
 
+---
+
+![Capybara](http://img1.wikia.nocookie.net/__cb20130810045256/cookieclicker/images/2/24/Capybara-02.jpg)
+
+---
+
+# Capybara
+> Capybara helps you test web applications by simulating how a real user would
+> interact with your app.
+>
+> https://github.com/jnicklas/capybara
+
+---
+
+# See Also:
+Selenium
+
+---
+
+# Let's Write a Test
+```ruby
+  describe 'This Talk\'s Presentation' do
+    let(:url) { 'https://bbesmanoff.github.io/how-to-test-webapps' }
+    let(:gh_repo) { 'https://github.com/bbesmanoff/how-to-test-webapps' }
+    let(:link_text) { 'bbesmanoff/how-to-test-webapps' }
+    let(:right_arrow_selector) { '.navigate-right' }
+
+    before :each do
+      visit url
+    end
+
+    describe 'the repo link' do
+      it 'should link to the repo' do
+        click_link link_text
+
+        expect(page.current_url).to eq gh_repo
+      end
+    end
+
+    describe 'the right arrow' do
+      describe 'using it to switch slides' do
+        before :each do
+          arrow = page.find :css, right_arrow_selector
+          arrow.click
+        end
+
+        it 'should show the second slide' do
+          current_slide = page.find :css, 'section.present'
+          expect(current_slide.text).to eq 'WHO AM I?'
+        end
+      end
+    end
+  end
+```
+example in shell
+
+---
+
+# :thumbsup: :question:
+---
+
+# :x:
+
+---
+
+# Conerns
+Right now, the test knows __a lot__ about the page
+
+---
+
+# Conerns
+What if we wanted to extend the test suite?
+Add some negative cases?
+
+---
+
+:clipboard:
+
+---
+
+# Conerns
+Now the selector changes for something
+
+---
+
+:poop:
+
+---
+
+# Page Objects to the Rescue!
+
+---
+
+# What Is a Page Object?
+* Object Oriented Wrapper around a single element
+  * Page
+  * Particular Widget
+
+---
+
+# What Does it Look Like?
+
+```ruby
+class Slideshow
+    def initialize(url)
+      @down_arrow = Reveal::Arrow.new 'down'
+      @left_arrow = Reveal::Arrow.new 'left'
+      @right_arrow = Reveal::Arrow.new 'right'
+      @up_arrow = Reveal::Arrow.new 'up'
+
+      @url = url
+    end
+
+    def content
+      page.find :css, 'section.present'
+    end
+
+    def text
+      content = page.find :css, 'section.present'
+      content.text
+    end
+...
+```
+
+---
+
+# What Does the Test Look Like?
+
+```ruby
+  describe 'This Presentation' do
+    let(:url) { 'http://bbesmanoff.github.io/how-to-test-webapps/#/' }
+
+    before :each do
+      visit url
+
+      @slideshow = Reveal::Slideshow.new url
+    end
+
+    describe 'the index page' do
+      it 'should be the first slide' do
+        expect(@slideshow.first?).to be_truthy
+      end
+
+      it 'should be treated as slide 0' do
+        expect(@slideshow.current_slide).to be_zero
+      end
+    end
+
+  ...
+```
+
+---
+
+# Page Objects
+* Encapsulation
+* Consistent Interface
+
+---
+
+# Put it All Together
+
+---
+
+# Put it All Together
+_an excercise left for the reader_
+
+---
+
+# Unsolicited Tips
+1. Think about what you're tests are saying
+
+---
+
+# Unsolicited Tips
+1. Think about what you're tests are saying
+  * Is it English?
+
+---
+
+# Unsolicited Tips
+1. Think about what you're tests are saying
+  * Is it English?
+  * Can you hand your test output to someone and they understand it?
+
+
+---
+
+# Unsolicited Tips
+1. Think about what you're tests are saying
+  * Is it English?
+  * Can you hand your test output to someone and they understand it?
+  * Can you hand your test *input* to someone and they understand it?
+
+---
+
+# :question: :question: :question:
+
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
