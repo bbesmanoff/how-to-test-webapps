@@ -121,7 +121,24 @@ It looks like English
 
 [example lives here](jasmine_01.html)
 
+---
 
+:rage:
+
+---
+
+# B__D__D
+## The __D__ is for Driven
+
+---
+
+# Jasmine: An Example
+[now with less angry colors](jasmine_02.html)
+
+---
+
+:boom: :boom: :boom:
+
+---
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
-
