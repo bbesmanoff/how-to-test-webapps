@@ -1,0 +1,26 @@
+<html>
+<head>
+  <link rel="shortcut icon" type="image/png" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.css"> 
+
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/boot.js"></script>
+
+  <script type="text/javascript">
+    var fn = function(s) { console.log(s) };
+
+    describe('fn', function() {
+      it('should call console.log', function() {
+        spyOn(console, 'log');
+        fn("Hello");
+
+        expect(console.log).toHaveBeenCalled();
+        expect(console.log).toHaveBeenCalledWith('Hello');
+      });
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>

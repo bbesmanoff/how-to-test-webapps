@@ -1,0 +1,104 @@
+<html>
+<head>
+  <script src="jquery-2.1.1/jquery.min.js"></script>
+  <script src="underscore-1.7.0/underscore-min.js"></script>
+  <script src="backbone-1.1.2/backbone-min.js"></script>
+  <script type="text/javascript">
+    var StudentModel = Backbone.Model.extend({
+      procrastinate: function() {
+        console.log(this.get('name') + ' is procrastinating.  Typical year ' +  
+          this.get('year') + ' things.');
+      }
+    });
+
+    var StudentView = Backbone.View.extend({
+      tagName: 'li',
+      class: 'student-record',
+
+      template: _.template('<%= name %> - <%= year %> <a href="#">[Procrastinate]</a>'),
+
+      events: {
+        'click a': 'procrastinate'
+      },
+
+      render: function() {
+        var modelJson = this.model.toJSON();
+        this.$el.html(this.template(modelJson));
+
+        return this;
+      },
+
+      procrastinate: function() {
+        this.model.procrastinate();
+      }
+    });
+
+    var StudentCollection = Backbone.Collection.extend({
+      model: StudentModel
+    });
+
+    var StudentCollectionView = Backbone.View.extend({
+      el: 'ul#student-list',
+
+      initialize: function() {
+        this.render();
+      },
+
+      render: function() {
+        var self = this;
+        _(this.collection.models).each(function(student) {
+          var modelView = new StudentView({model: student});
+          self.$el.append(modelView.render().$el);
+        });
+
+        return this;
+      }
+
+    });    
+
+    $(function() {
+      var studentCollection = new StudentCollection([
+        {
+          'name': 'Blanchard Cooke',
+          'year': 3
+        },
+        {
+          'name': 'Hoffman Bright',
+          'year': 2
+        },
+        {
+          'name': 'Reyna Matthews',
+          'year': 4
+        },
+        {
+          'name': 'Ruiz Ortega',
+          'year': 4
+        },
+        {
+          'name': 'Rosetta Kerr',
+          'year': 5
+        },
+        {
+          'name': 'Bryant Levy',
+          'year': 1
+        },
+        {
+          'name': 'Esmeralda Duffy',
+          'year': 1
+        }
+      ]);
+
+      var student = new StudentModel({'name': 'Joe Schmoe'});
+      student.set({year: 5});
+
+      studentCollection.add(student);
+
+      var studentCollectionView = new StudentCollectionView({collection: studentCollection});
+    })
+  </script>
+</head>
+<body>
+  <ul id="student-list">
+  </ul>
+</body>
+</html>

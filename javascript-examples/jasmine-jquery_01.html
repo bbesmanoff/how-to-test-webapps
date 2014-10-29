@@ -1,0 +1,51 @@
+<html>
+<head>
+  <link rel="shortcut icon" type="image/png" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.css"> 
+
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/boot.js"></script>
+
+  <script type="text/javascript" src="jquery-2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="jasmine-jquery-2.0.5/jasmine-jquery.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#btn').on('click', function() {
+        var $lbl = $('#lbl');
+        $lbl.text('Why would you do that?!?!');
+
+        setTimeout(function() {
+          $lbl.text(''); // reset the text
+        }, 1000);
+
+      });
+    });
+
+    describe('The Big Red Button', function() {
+      describe('when clicked', function() {
+        beforeEach(function() {
+          var $button = $('#btn');
+          $button.trigger('click');
+        });
+
+        it ('should update the label', function() {
+          expect($('#lbl')).toHaveText('Why would you do that?!?!'); 
+        });
+      });
+    });
+  </script>
+
+  <style>
+    #btn {
+      background-color: red;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">Don't Click Me</button>
+  <p id="lbl" />
+</body>
+</html>
