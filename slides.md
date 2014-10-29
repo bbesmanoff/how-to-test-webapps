@@ -20,12 +20,16 @@ Brian Besmanoff
 
 # Tech List
 
-* Ruby
+---
+
+## Ruby
   * Rails
   * RSpec
   * Capybara
-<p><br /></p>
-* Javascript
+
+---
+
+## Javascript
   * Backbone
   * Jasmine
   * Jasmine-jQuery
