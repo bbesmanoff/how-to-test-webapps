@@ -28,7 +28,6 @@
 <h2>Ruby</h2>
 
 <ul>
-<li>Rails</li>
 <li>RSpec</li>
 <li>Capybara</li>
 </ul>
@@ -424,5 +423,47 @@ slide
   });
 </code></pre>
 <p><a href="backbone_jasmine_01.html">example here</a></p>
+
+</section>
+<section>
+
+<p><img class="emoji" title=":smiley:" alt=":smiley:" src="https://assets-cdn.github.com/images/icons/emoji/smiley.png" align="absmiddle"></p>
+
+</section>
+<section>
+
+<h1>Let's Talk About Ruby</h1>
+
+</section>
+<section>
+
+<h1>Let's Talk About Ruby</h1>
+
+<p>Javascript &lt; --- &gt; Ruby</p>
+
+</section>
+<section>
+
+<h1>Let's Talk About Ruby</h1>
+
+<p>Jasmine &lt; --- &gt; RSpec</p>
+
+</section>
+<section>
+
+<h1>RSpec</h1>
+<pre><code class="ruby">describe MyMathModule do
+  describe '#abs' do
+    describe 'with negative input' do
+      it 'should return a positive number' do
+        actual = MyMathModule.abs -4
+
+        expect(actual).to satisfy { |v| v &gt; 0 }
+      end
+    end
+  end
+end
+</code></pre>
+<p>examples are in this repository, but let's go to the shell</p>
 
 </section>
