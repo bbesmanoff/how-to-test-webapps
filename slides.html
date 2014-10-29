@@ -173,3 +173,69 @@ It looks like English</p>
 <p><img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/boom.png" align="absmiddle"> <img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/boom.png" align="absmiddle"> <img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/boom.png" align="absmiddle"></p>
 
 </section>
+<section>
+
+<h1>Jasmine-jQuery</h1>
+
+</section>
+<section>
+
+<h1>Jasmine-jQuery</h1>
+
+<p>A set of additonal, jQuery-friendly, matchers for Jasmine</p>
+
+</section>
+<section>
+
+<h2>But doesn't Jasmine have enough?</h2>
+
+<ul>
+<li><code>toBe</code></li>
+<li><code>toMatch</code></li>
+<li><code>toContain</code></li>
+<li><code>toBeTruthy</code></li>
+<li><code>toBeDefined</code></li>
+<li><code>...</code></li>
+</ul>
+
+</section>
+<section>
+
+<h2>What looks more English-y?</h2>
+
+<p><code>expect($('#elem').attr('checked')).toBeTruthy()</code></p>
+
+<p>-or-</p>
+
+<p><code>expect($('#elem')).toBeChecked()</code></p>
+
+</section>
+<section>
+
+<h1>Jasmine-jQuery: An Example</h1>
+
+</section>
+<section>
+
+<h2>Jasmine-jQuery: An Example</h2>
+<pre><code class="javascript">describe('The Big Red Button', function() {
+  describe('when clicked', function() {
+    beforeEach(function() {
+      var $button = $('#btn');
+      $button.trigger('click');
+    });
+
+    it ('should update the label', function() {
+      expect($('#lbl')).toHaveText('Why would you do that?!?!');
+    });
+  });
+});
+</code></pre>
+</section>
+<section>
+
+<h2>Jasmine-jQuery: An Example</h2>
+
+<p><a href="jasmine-jquery_01.html">no tricks, just <img class="emoji" title=":green_heart:" alt=":green_heart:" src="https://assets-cdn.github.com/images/icons/emoji/green_heart.png" align="absmiddle"></a></p>
+
+</section>
