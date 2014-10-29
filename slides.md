@@ -34,5 +34,28 @@ Brian Besmanoff
   * Jasmine
   * Jasmine-jQuery
 
+---
+
+:checkered_flag:
+# Let's Get Started
+:checkered_flag:
+
+---
+
+# Javascript
+
+---
+
+# Jasmine
+:rice:
+
+---
+
+# Jasmine
+
+> Jasmine is a Behavior Driven Development testing framework for JavaScript
+> http://jasmine.github.io/2.0/introduction.html
+
+
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
 
