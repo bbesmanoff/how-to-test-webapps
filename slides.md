@@ -226,10 +226,6 @@ A set of additonal, jQuery-friendly, matchers for Jasmine
 
 ---
 
-# Jasmine-jQuery: An Example
-
----
-
 ## Jasmine-jQuery: An Example
 
 ```javascript
@@ -250,8 +246,45 @@ describe('The Big Red Button', function() {
 
 ---
 
-## Jasmine-jQuery: An Example
-[example here](jasmine-jquery_01.html)
+# Let's Take the Red Pill
 
+---
+
+# A Little Bit of Backbone
+> Backbone.js gives structure to web applications by providing models with
+> key-value binding and custom events, collections with a rich API of enumerable
+> functions, views with declarative event handling...  
+> http://backbonejs.org/
+
+---
+
+# What Does That Even Mean?
+
+---
+
+# What Does That Even Mean?
+* Client-side MVC Framework
+
+---
+
+# What Does That Even Mean?
+Models, Collections, Views  
+
+---
+
+# What Does That Even Mean?
+Collections contain models  
+Views display collections and/or models
+
+---
+
+# Show, Don't Tell
+
+[#fail](backbone_01.html)
+
+```notes
+The example wasn't being parsed properly and would have been a little long for a
+slide
+```
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
