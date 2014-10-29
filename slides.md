@@ -369,6 +369,41 @@ Testing the view:
 ```
 [example here](backbone_jasmine_01.html)
 
+---
 
+:smiley:
+
+---
+
+# Let's Talk About Ruby
+
+---
+
+# Let's Talk About Ruby
+Javascript < --- > Ruby
+
+---
+
+# Let's Talk About Ruby
+Jasmine < --- > RSpec
+
+---
+
+# RSpec
+
+```ruby
+describe MyMathModule do
+  describe '#abs' do
+    describe 'with negative input' do
+      it 'should return a positive number' do
+        actual = MyMathModule.abs -4
+
+        expect(actual).to satisfy { |v| v > 0 }
+      end
+    end
+  end
+end
+```
+examples are in this repository, but let's go to the shell
 
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
