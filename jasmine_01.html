@@ -1,0 +1,40 @@
+<html>
+<head>
+  <link rel="shortcut icon" type="image/png" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.css"> 
+
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/boot.js"></script>
+
+  <script type="text/javascript">
+    describe('MyMathModule', function() {
+      describe('.abs', function() {
+        describe('with negative input', function() {
+          it('should return a positive number', function() {
+            var result = MyMathModule.abs(-4);
+            expect(result).toBeGreaterThan(0);
+          });
+        });
+
+        describe('with zero as an input', function() {
+          it('should return zero', function() {
+            var result = MyMathModule.abs(0);
+            expect(result).toBe(0);
+          });
+        });
+
+
+        describe('with negative input', function() {
+          it('should return a positive number', function() {
+            var result = MyMathModule.abs(-4);
+            expect(result).toBeGreaterThan(0);
+          });
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+</body>
+</html
