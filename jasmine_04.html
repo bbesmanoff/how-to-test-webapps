@@ -20,7 +20,7 @@
 
         expect(console.log).not.toHaveBeenCalled();
 
-        jasmine.clock().tick(1000001);
+        jasmine.clock().tick(1000000);
         expect(console.log).toHaveBeenCalled();
         expect(console.log).toHaveBeenCalledWith('done');
       });
