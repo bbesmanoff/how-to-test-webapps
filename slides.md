@@ -23,7 +23,6 @@ Brian Besmanoff
 ---
 
 ## Ruby
-  * Rails
   * RSpec
   * Capybara
 
