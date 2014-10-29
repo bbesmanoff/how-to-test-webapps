@@ -133,7 +133,7 @@ It looks like English
 ---
 
 # Jasmine: An Example
-[now with less angry colors](jasmine_02.html)
+[now with :green_heart:](jasmine_02.html)
 
 ---
 
@@ -251,6 +251,7 @@ describe('The Big Red Button', function() {
   });
 });
 ```
+[example here](jasmine-jquery_01.html)
 
 ---
 
