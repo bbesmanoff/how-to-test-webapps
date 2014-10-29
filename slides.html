@@ -175,6 +175,58 @@ It looks like English</p>
 </section>
 <section>
 
+<h1>Some Other Cool Features</h1>
+
+<ul>
+<li>Spies</li>
+<li>Clock Management</li>
+</ul>
+
+</section>
+<section>
+
+<h1>Spies</h1>
+
+<p><em>Spy on</em> a function</p>
+<pre><code class="javascript">  var fn = function(s) { console.log(s) };
+
+  describe('fn', function() {
+    it('should call console.log', function() {
+      spyOn(console, 'log');
+      fn("Hello");
+
+      expect(console.log).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith('Hello');
+    });
+  });
+</code></pre>
+<p><a href="jasmine_03.html">example here</a></p>
+
+</section>
+<section>
+
+<h1>Clock Management</h1>
+<pre><code class="javascript">  var waitAndDo = function(fn, ms) { setTimeout(fn, ms); };
+
+  describe('waitAndDo', function() {
+    beforeEach(jasmine.clock.install);
+    afterEach(jasmine.clock.uninstall);
+
+    it('should wait for 1000000 ms', function() {
+      spyOn(console, 'log');
+      waitAndDo(function() { console.log('done'); }, 1000000);
+
+      expect(console.log).not.toHaveBeenCalled();
+
+      clock.tick(1000001);
+      expect(console.log).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith(done);
+    });
+  });
+</code></pre>
+</section>
+<section>
+
 <h1>Jasmine-jQuery</h1>
 
 </section>
@@ -237,5 +289,29 @@ It looks like English</p>
 <h2>Jasmine-jQuery: An Example</h2>
 
 <p><a href="jasmine-jquery_01.html">no tricks, just <img class="emoji" title=":green_heart:" alt=":green_heart:" src="https://assets-cdn.github.com/images/icons/emoji/green_heart.png" align="absmiddle"></a></p>
+
+</section>
+<section>
+
+<h1>A Little Bit of Backbone</h1>
+
+<blockquote>
+<p>Backbone.js gives structure to web applications by providing models with
+key-value binding and custom events, collections with a rich API of enumerable
+functions, views with declarative event handling...<br>
+<a href="http://backbonejs.org/">http://backbonejs.org/</a></p>
+</blockquote>
+
+</section>
+<section>
+
+<h1>Backbone In Layman's Terms:</h1>
+
+<p>Clientside MVC Framework</p>
+
+</section>
+<section>
+
+<h1>Why Do I Need That?</h1>
 
 </section>

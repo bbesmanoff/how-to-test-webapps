@@ -1,0 +1,33 @@
+<html>
+<head>
+  <link rel="shortcut icon" type="image/png" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.css"> 
+
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/boot.js"></script>
+
+  <script type="text/javascript">
+    var waitAndDo = function(fn, ms) { setTimeout(fn, ms); };
+
+    describe('waitAndDo', function() {
+      beforeEach(function() { debugger; });
+      beforeEach(jasmine.clock().install);
+      afterEach(jasmine.clock().uninstall);
+
+      it('should wait for 1000000 ms', function() {
+        spyOn(console, 'log');
+        waitAndDo(function() { console.log('done'); }, 1000000);
+
+        expect(console.log).not.toHaveBeenCalled();
+
+        jasmine.clock().tick(1000001);
+        expect(console.log).toHaveBeenCalled();
+        expect(console.log).toHaveBeenCalledWith('done');
+      });
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>
