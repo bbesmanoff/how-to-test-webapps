@@ -1,0 +1,178 @@
+<html>
+<head>
+  <script src="jquery-2.1.1/jquery.min.js"></script>
+  <script src="underscore-1.7.0/underscore-min.js"></script>
+  <script src="backbone-1.1.2/backbone-min.js"></script>
+  <script type="text/javascript">
+    var StudentModel = Backbone.Model.extend({
+      procrastinate: function() {
+        console.log(this.get('name') + ' is procrastinating.  Typical year ' +  
+          this.get('year') + ' things.');
+      }
+    });
+
+    var StudentView = Backbone.View.extend({
+      tagName: 'li',
+      class: 'student-record',
+
+      template: _.template('<%= name %> - <%= year %> <a href="#">[Procrastinate]</a>'),
+
+      events: {
+        'click a': 'procrastinate'
+      },
+
+      render: function() {
+        var modelJson = this.model.toJSON();
+        this.$el.html(this.template(modelJson));
+
+        return this;
+      },
+
+      procrastinate: function() {
+        this.model.procrastinate();
+      }
+    });
+
+    var StudentCollection = Backbone.Collection.extend({
+      model: StudentModel
+    });
+
+    var StudentCollectionView = Backbone.View.extend({
+      el: 'ul#student-list',
+
+      initialize: function() {
+        this.render();
+      },
+
+      render: function() {
+        var self = this;
+        _(this.collection.models).each(function(student) {
+          var modelView = new StudentView({model: student});
+          self.$el.append(modelView.render().$el);
+        });
+
+        return this;
+      }
+
+    });    
+
+    $(function() {
+      var studentCollection = new StudentCollection([
+        {
+          'name': 'Blanchard Cooke',
+          'year': 3
+        },
+        {
+          'name': 'Hoffman Bright',
+          'year': 2
+        },
+        {
+          'name': 'Reyna Matthews',
+          'year': 4
+        },
+        {
+          'name': 'Ruiz Ortega',
+          'year': 4
+        },
+        {
+          'name': 'Rosetta Kerr',
+          'year': 5
+        },
+        {
+          'name': 'Bryant Levy',
+          'year': 1
+        },
+        {
+          'name': 'Esmeralda Duffy',
+          'year': 1
+        }
+      ]);
+
+      var student = new StudentModel({'name': 'Joe Schmoe'});
+      student.set({year: 5});
+
+      studentCollection.add(student);
+
+      var studentCollectionView = new StudentCollectionView({collection: studentCollection});
+    })
+  </script>
+
+  <link rel="shortcut icon" type="image/png" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.css"> 
+
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/jasmine-html.js"></script>
+  <script type="text/javascript" src="jasmine-2.0.3/lib/jasmine-2.0.3/boot.js"></script>
+
+  <script type="text/javascript" src="jasmine-jquery-2.0.5/jasmine-jquery.js"></script>
+
+  <script type="text/javascript">
+    describe('StudentModel', function() {
+      beforeEach(function() {
+        this.student = new StudentModel({name: 'Joe Schmoe', year: 2});
+      });
+
+      describe('#procrastinate', function() {
+        it('should write to the console', function() {
+          spyOn(console, 'log');
+          
+          this.student.procrastinate();
+
+          expect(console.log).toHaveBeenCalled();
+          expect(console.log).toHaveBeenCalledWith('Joe Schmoe is procrastinating.  Typical year 2 things.');
+        });
+      });
+    });
+
+    describe('StudentView', function() {
+      beforeEach(function() {
+        this.student = new StudentModel({name: 'Joe Schmoe', year: 2});
+      });
+
+      describe('#render', function() {
+        var $rendered;
+
+        beforeEach(function() {
+          var view = new StudentView({model: this.student});
+          $rendered = view.render().$el;
+        });
+
+        it ('should be a list item', function() {
+          expect($rendered).toBeMatchedBy('li');
+        });
+
+        it('should include a student\'s name', function() {
+          expect($rendered).toContainText('Joe Schmoe');
+        });
+
+        it('should include a student\'s year', function() {
+          expect($rendered).toContainText('2');
+        });
+
+        it('should include a procrastination link', function() {
+          expect($rendered).toContainElement('a');
+        });
+
+        describe('the procrastination link', function() {
+          var $link;
+
+          beforeEach(function() {
+            $link = $rendered.find('a');
+          });
+
+          it('should call the model\'s procrastinate method', function() {
+            spyOn(this.student, 'procrastinate').and.callThrough();
+            $link.trigger('click');
+
+            expect(this.student.procrastinate).toHaveBeenCalled();
+          });
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <ul id="student-list">
+  </ul>
+</body>
+</html>
