@@ -57,5 +57,27 @@ Brian Besmanoff
 > http://jasmine.github.io/2.0/introduction.html
 
 
+---
+
+:alarm_clock:
+
+---
+
+# What is BDD?
+
+---
+
+# What is BDD?
+
+* BDD is a style of testing
+* English-y descriptions of things
+
+---
+
+# Example: Cucumber
+![Cucumber Example](http://cukes.info/images/feature.png)
+
+---
+
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
 
