@@ -141,6 +141,57 @@ It looks like English
 
 ---
 
+# Some Other Cool Features
+* Spies
+* Clock Management
+
+---
+
+# Spies
+_Spy on_ a function
+
+```javascript
+  var fn = function(s) { console.log(s) };
+
+  describe('fn', function() {
+    it('should call console.log', function() {
+      spyOn(console, 'log');
+      fn("Hello");
+
+      expect(console.log).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith('Hello');
+    });
+  });
+```
+
+[example here](jasmine_03.html)
+
+---
+
+# Clock Management
+
+```javascript
+  var waitAndDo = function(fn, ms) { setTimeout(fn, ms); };
+
+  describe('waitAndDo', function() {
+    beforeEach(jasmine.clock.install);
+    afterEach(jasmine.clock.uninstall);
+
+    it('should wait for 1000000 ms', function() {
+      spyOn(console, 'log');
+      waitAndDo(function() { console.log('done'); }, 1000000);
+
+      expect(console.log).not.toHaveBeenCalled();
+
+      clock.tick(1000001);
+      expect(console.log).toHaveBeenCalled();
+      expect(console.log).toHaveBeenCalledWith(done);
+    });
+  });
+```
+
+---
+
 # Jasmine-jQuery
 
 ---
