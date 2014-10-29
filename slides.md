@@ -141,4 +141,59 @@ It looks like English
 
 ---
 
+# Jasmine-jQuery
+
+---
+
+# Jasmine-jQuery
+A set of additonal, jQuery-friendly, matchers for Jasmine
+
+---
+
+## But doesn't Jasmine have enough?
+* `toBe`
+* `toMatch`
+* `toContain`
+* `toBeTruthy`
+* `toBeDefined`
+* `...`
+
+---
+
+## What looks more English-y?
+`expect($('#elem').attr('checked')).toBeTruthy()`
+
+-or-
+
+`expect($('#elem')).toBeChecked()`
+
+---
+
+# Jasmine-jQuery: An Example
+
+---
+
+## Jasmine-jQuery: An Example
+
+```javascript
+describe('The Big Red Button', function() {
+  describe('when clicked', function() {
+    beforeEach(function() {
+      var $button = $('#btn');
+      $button.trigger('click');
+    });
+
+    it ('should update the label', function() {
+      expect($('#lbl')).toHaveText('Why would you do that?!?!');
+    });
+  });
+});
+```
+
+---
+
+## Jasmine-jQuery: An Example
+[no tricks, just :green_heart:](jasmine-jquery_01.html)
+
+
 [repo]: https://github.com/bbesmanoff/how-to-test-webapps
