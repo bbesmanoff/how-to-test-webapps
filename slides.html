@@ -1,0 +1,151 @@
+<section>
+<h1>How to Test Web Apps</h1>
+
+<p>Brian Besmanoff<br>
+<img class="emoji" title=":octocat:" alt=":octocat:" src="https://assets-cdn.github.com/images/icons/emoji/octocat.png" align="absmiddle"> <a href="https://github.com/bbesmanoff/how-to-test-webapps">bbesmanoff/how-to-test-webapps</a></p>
+
+</section>
+<section>
+
+<h1>Who Am I?</h1>
+
+</section>
+<section>
+
+<h1>Who Are You?</h1>
+
+<h3>Who who, Who who</h3>
+<aside class="notes">  Beginner / Intermediate Web Dev
+</aside>
+</section>
+<section>
+
+<h1>Tech List</h1>
+
+</section>
+<section>
+
+<h2>Ruby</h2>
+
+<ul>
+<li>Rails</li>
+<li>RSpec</li>
+<li>Capybara</li>
+</ul>
+
+</section>
+<section>
+
+<h2>Javascript</h2>
+
+<ul>
+<li>Backbone</li>
+<li>Jasmine</li>
+<li>Jasmine-jQuery</li>
+</ul>
+
+</section>
+<section>
+
+<p><img class="emoji" title=":checkered_flag:" alt=":checkered_flag:" src="https://assets-cdn.github.com/images/icons/emoji/checkered_flag.png" align="absmiddle"></p>
+
+<h1>Let's Get Started</h1>
+
+<p><img class="emoji" title=":checkered_flag:" alt=":checkered_flag:" src="https://assets-cdn.github.com/images/icons/emoji/checkered_flag.png" align="absmiddle"></p>
+
+</section>
+<section>
+
+<h1>Javascript</h1>
+
+</section>
+<section>
+
+<h1>Jasmine</h1>
+
+<p><img class="emoji" title=":rice:" alt=":rice:" src="https://assets-cdn.github.com/images/icons/emoji/rice.png" align="absmiddle"></p>
+
+</section>
+<section>
+
+<h1>Jasmine</h1>
+
+<blockquote>
+<p>Jasmine is a Behavior Driven Development testing framework for JavaScript
+<a href="http://jasmine.github.io/2.0/introduction.html">http://jasmine.github.io/2.0/introduction.html</a></p>
+</blockquote>
+
+</section>
+<section>
+
+<p><img class="emoji" title=":alarm_clock:" alt=":alarm_clock:" src="https://assets-cdn.github.com/images/icons/emoji/alarm_clock.png" align="absmiddle"></p>
+
+</section>
+<section>
+
+<h1>What is BDD?</h1>
+
+</section>
+<section>
+
+<h1>What is BDD?</h1>
+
+<ul>
+<li>BDD is a style of testing</li>
+<li>English-y descriptions of things</li>
+</ul>
+
+</section>
+<section>
+
+<h1>Example: Cucumber</h1>
+
+<p><img src="http://cukes.info/images/feature.png" alt="Cucumber Example"></p>
+
+</section>
+<section>
+
+<h1>Return to Jasmine</h1>
+
+<p>Cucumber is cool<br>
+It looks like English</p>
+
+</section>
+<section>
+
+<h2>But I Like JS &gt; English</h2>
+
+</section>
+<section>
+
+<h1>Jasmine: An Example</h1>
+<pre><code class="javascript">  describe('MyMathModule', function() {
+    describe('.abs', function() {
+      describe('with negative input', function() {
+        it('should return a positive number', function() {
+          var result = MyMathModule.abs(-4);
+          expect(result).toBeGreaterThan(0);
+      });
+
+      describe('with zero as an input', function() {
+        it('should return zero', function() {
+          var result = MyMathModule.abs(0);
+          expect(result).toBe(0);
+      });
+
+      describe('with positive input', function() {
+        it('should return a positive number', function() {
+          var result = MyMathModule.abs(4);
+          expect(result).toBeGreaterThan(0);
+      });
+    });
+  });
+</code></pre>
+</section>
+<section>
+
+<h1>Jasmine: An Example</h1>
+
+<p><a href="jasmine_01.html">example lives here</a></p>
+
+</section>
