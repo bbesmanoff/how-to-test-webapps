@@ -11,7 +11,6 @@
     var waitAndDo = function(fn, ms) { setTimeout(fn, ms); };
 
     describe('waitAndDo', function() {
-      beforeEach(function() { debugger; });
       beforeEach(jasmine.clock().install);
       afterEach(jasmine.clock().uninstall);
 
@@ -22,6 +21,17 @@
         expect(console.log).not.toHaveBeenCalled();
 
         jasmine.clock().tick(1000001);
+        expect(console.log).toHaveBeenCalled();
+        expect(console.log).toHaveBeenCalledWith('done');
+      });
+
+      it('should show that clock() actually works', function() {
+        spyOn(console, 'log');
+        waitAndDo(function() { console.log('done'); }, 1);
+
+        expect(console.log).not.toHaveBeenCalled();
+
+        jasmine.clock().tick(1);
         expect(console.log).toHaveBeenCalled();
         expect(console.log).toHaveBeenCalledWith('done');
       });
